@@ -1,6 +1,6 @@
 using PokerCoba.Interface;
 using PokerCoba.Enums;
-
+using System.Linq;
 namespace PokerCoba.Class;
 
 public class HandEvaluator
@@ -14,25 +14,25 @@ public class HandEvaluator
 			return CardType.StraightFlush;
 
 		if (IsFourOfAKind(cards))
-			throw new NotImplementedException();
+			return CardType.FourOfAKind;
 
 		if (IsFullHouse(cards))
-			throw new NotImplementedException();
+			return CardType.FullHouse;
 
 		if (IsFlush(cards))
-			throw new NotImplementedException();
+			return CardType.Flush;
 
 		if (IsStraight(cards))
-			throw new NotImplementedException();
+			return CardType.Straight;
 
 		if (IsThreeOfAKind(cards))
-			throw new NotImplementedException();
+			return CardType.ThreeOfAKind;
 
 		if (IsTwoPair(cards))
-			throw new NotImplementedException();
+			return CardType.TwoPair;
 
 		if (IsOnePair(cards))
-			throw new NotImplementedException();
+			return CardType.OnePair;
 
 		return CardType.HighCard;
 	}
@@ -41,31 +41,31 @@ public class HandEvaluator
 
 	private bool IsRoyalFlush(List<ICard> cards)
 	{
-		bool sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
+		bool _sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
 		
-		bool containsRoyalFlush = cards.Any(c => c.cardRank== CardRank.Ace) &&
+		bool _containsRoyalFlush = cards.Any(c => c.cardRank== CardRank.Ace) &&
 								  cards.Any(c=> c.cardRank == CardRank.King)&&
 								  cards.Any(c => c.cardRank == CardRank.Queen)&&
 								  cards.Any(c=> c.cardRank == CardRank.Jack) &&
 								  cards.Any(c => c.cardRank == CardRank.Ten);
-		return sameSuit	& containsRoyalFlush;
+		return _sameSuit	& _containsRoyalFlush;
 	}
 
 	private static bool IsStraightFlush(List<ICard> cards)
 	{
-		bool sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
-		var sortedCards = cards.OrderBy(c => c.cardRank).ToList();
+		bool _sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
+		var _sortedCards = cards.OrderBy(c => c.cardRank).ToList();
 		
 		bool isStraight = true;
-		for (int i = 1; i< sortedCards.Count; i++)
+		for (int i = 1; i< _sortedCards.Count; i++)
 		{
-			if(sortedCards[i].cardRank != sortedCards[i-1].cardRank+1)
+			if(_sortedCards[i].cardRank != _sortedCards[i-1].cardRank+1)
 			{
 				isStraight = false;
 				break;
 			}
 		}
-		return sameSuit && isStraight;
+		return _sameSuit && isStraight;
 	}
 
 	private static bool IsFourOfAKind(List<ICard> cards)
@@ -77,10 +77,10 @@ public class HandEvaluator
 	private static bool IsFullHouse(List<ICard> cards)
 	{
 		// Check if there are three cards of one rank and two cards of another rank.
-		var groups = cards.GroupBy(c => c.cardRank).ToList();
-		return groups.Count == 2 && 
-				(groups[0].Count() == 3 && groups[1].Count() == 2 ||
-				 groups[0].Count() == 2 && groups[1].Count() == 3);
+		var _groups = cards.GroupBy(c => c.cardRank).ToList();
+		return _groups.Count == 2 && 
+				(_groups[0].Count() == 3 && _groups[1].Count() == 2 ||
+				 _groups[0].Count() == 2 && _groups[1].Count() == 3);
 	}
 
 	private static bool IsFlush(List<ICard> cards)

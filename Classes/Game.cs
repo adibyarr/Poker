@@ -51,12 +51,15 @@ public class PokerGame
 			CommunityCards.Add(communityCards);
 		}
 	}
+	
+	// Logik buat set taruhannya belum lengkap
 	public void BettingRound(int currentBet, ref int pot)
 	{
 		foreach(IPlayer player in Players)
 		{
 			if(player.Folded) continue;
-			PlayerAction(player, currentBet, ref pot);
+			
+			
 		}
 	}
 	 public void PlayerAction(IPlayer player,int currentBet, ref int pot)
@@ -74,6 +77,8 @@ public class PokerGame
 				player.Folded = true;
 				Console.WriteLine($"Player: {player.Name} folds.");
 				break;
+				
+			// 
 			case "raise":
 				Console.Write("Masukkan taruhanmu: ");
 				if(int.TryParse(input, out int raiseAmount))
@@ -109,21 +114,21 @@ public class PokerGame
 				}
 				break;
 			case "all-in":
-                    if (player.Chips > 0)
-                    {
-                        pot += player.Chips;
-                        player.ChipsBet += player.Chips;
-                        player.Chips = 0;
-                        Console.WriteLine($"Player {player.Name} goes all-in!");
-                    }
-                    else
-                    {
-                        Console.WriteLine("You don't have any chips left to go all-in.");
-                    }
-                    break;
-            default:
-                    Console.WriteLine("Invalid action. Please choose 'fold', 'raise', 'call', or 'all-in'.");
-                    break;
+					if (player.Chips > 0)
+					{
+						pot += player.Chips;
+						player.ChipsBet += player.Chips;
+						player.Chips = 0;
+						Console.WriteLine($"Player {player.Name} goes all-in!");
+					}
+					else
+					{
+						Console.WriteLine("You don't have any chips left to go all-in.");
+					}
+					break;
+			default:
+					Console.WriteLine("Invalid action. Please choose 'fold', 'raise', 'call', or 'all-in'.");
+					break;
 		}
 	}
 	public IPlayer DetermineWinner()
