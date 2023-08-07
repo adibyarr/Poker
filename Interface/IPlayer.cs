@@ -7,6 +7,6 @@ public interface IPlayer
 	int ChipsBet{get; set;}
 	IHand Hand{get;}
 	bool Folded{get;set;}
-	
-	
+
+
 }

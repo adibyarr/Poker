@@ -31,18 +31,26 @@ public class PokerGameManager
 		
 		PokerGame.DealCards();
 		PokerGame.DisplayPlayerHand();
+		
 
 		int pot = 0;
 		PokerGame.BettingRound(currentBet: 0, ref pot);
+		
 		PokerGame.DealCommunityCards(numCommunityCards:3);
+		PokerGame.DisplayHandAndCommunityCards();
+		
 		PokerGame.BettingRound(currentBet:0, ref pot);
 		PokerGame.DealCommunityCards(numCommunityCards:1);
+		
 		PokerGame.BettingRound(currentBet:0, ref pot);
 		PokerGame.DealCommunityCards(numCommunityCards:1);
+		
 		PokerGame.BettingRound(currentBet: 0, ref pot);
 		
-		IPlayer winner = PokerGame.DetermineWinner();
-		Console.WriteLine($"Player {winner.Name} wins {pot} chips!");
+		var(winner, WinningHand) = PokerGame.DetermineWinner();
+		
+;
+		Console.WriteLine($"Player {winner.Name} wins {pot} with {WinningHand}");
 		
 		Console.WriteLine("Game Over");
 	}

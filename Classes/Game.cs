@@ -52,17 +52,7 @@ public class PokerGame
 		}
 	}
 	
-	// Logik buat set taruhannya belum lengkap
-	public void BettingRound(int currentBet, ref int pot)
-	{
-		foreach(IPlayer player in Players)
-		{
-			if(player.Folded) continue;
-			
-			
-		}
-	}
-	 public void PlayerAction(IPlayer player,int currentBet, ref int pot)
+	 public void PlayerAction(IPlayer player, ref int currentBet, ref int pot)
 	{
 		Console.WriteLine($"Player {player.Name}, ini giliran muu");
 		Console.WriteLine($"Chips yang kamu punya: {player.Chips}");
@@ -71,7 +61,6 @@ public class PokerGame
 		string input = Console.ReadLine().ToLower();
 
 		switch (input)
-		
 		{
 			case "fold":
 				player.Folded = true;
@@ -131,11 +120,60 @@ public class PokerGame
 					break;
 		}
 	}
-	public IPlayer DetermineWinner()
+	public void BettingRound(int currentBet, ref int pot)
+	{
+		foreach(IPlayer player in Players)
+		{
+			if(player.Folded) continue;
+			
+			PlayerAction(player, ref currentBet, ref pot);
+			
+			Console.WriteLine($"Current bet: {currentBet}");
+			Console.WriteLine($"Player chips: {player.Chips}");
+			Console.WriteLine("Masukkan taruhanmu: ");
+			if(int.TryParse(Console.ReadLine(), out int betAmount))
+			{
+				if(betAmount > player.Chips)
+				{
+					Console.WriteLine("Chips mu gacukup");
+					continue;
+				}
+				if(betAmount > currentBet)
+				{
+					currentBet = betAmount;
+					pot += currentBet;
+					player.Chips -= currentBet;
+					player.ChipsBet += currentBet;
+				}
+				else if (betAmount == currentBet)
+				{
+					pot += currentBet;
+					player.Chips -= currentBet;
+					player.ChipsBet += currentBet;
+				
+				}
+				else
+				{
+					Console.WriteLine("Taruhan mu harus lebih atau sama ");
+					continue;
+				}
+				Console.WriteLine($"Player {player.Name} bet {betAmount} chips");
+			}
+			else
+			{
+					Console.WriteLine("Invalid input");
+					continue;
+			}
+			
+		}
+		
+	}
+	public(IPlayer winner, CardType WinningHand)  DetermineWinner()
 	
 	{
 		IPlayer winner = Players[0];
 		HandEvaluator evaluator = new HandEvaluator();
+		CardType WinningHand = CardType.HighCard;
 		
 		
 		foreach(var player in Players)
@@ -144,11 +182,15 @@ public class PokerGame
 			allCards.AddRange(CommunityCards);
 
 			CardType playerHandType = evaluator.EvaluateHand(allCards); 
-			CardType winnerHandType = evaluator.EvaluateHand(winner.Hand.Cards);
+			if(playerHandType > WinningHand)
+			{
+				winner = player;
+				WinningHand = playerHandType;
+			}
 		}
 		int totalChipsPot = CommunityPot;
 		winner.Chips += totalChipsPot;
-		return winner; 
+		return (winner, WinningHand); 
 	}
 	public void DisplayHandAndCommunityCards()
 	{
@@ -170,10 +212,10 @@ public class PokerGame
 	}
 	public void DisplayPlayerHand()
 	{
-		Console.WriteLine("Players hand: ");
+		
 		foreach (var player in Players)
 		{
-			Console.WriteLine($"{player.Name} hands");
+			Console.WriteLine($"{player.Name} hands: ");
 			foreach(var card in player.Hand.Cards)
 			{
 				Console.WriteLine(card.ToString());

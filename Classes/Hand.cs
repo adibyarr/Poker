@@ -11,9 +11,8 @@ public class Hand : IHand
 	{
 		Cards.Add(card);
 	}
-
-    internal int CompareTo(Hand bestHand)
-    {
-        throw new NotImplementedException();
-    }
+	public void Clear()
+	{
+		Cards.Clear();
+	}
 }

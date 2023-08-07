@@ -43,12 +43,14 @@ public class HandEvaluator
 	{
 		bool _sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
 		
-		bool _containsRoyalFlush = cards.Any(c => c.cardRank== CardRank.Ace) &&
-								  cards.Any(c=> c.cardRank == CardRank.King)&&
-								  cards.Any(c => c.cardRank == CardRank.Queen)&&
-								  cards.Any(c=> c.cardRank == CardRank.Jack) &&
-								  cards.Any(c => c.cardRank == CardRank.Ten);
-		return _sameSuit	& _containsRoyalFlush;
+		bool _containsRoyalFlush = cards.Any(c => 
+						c.cardRank== CardRank.Ace ||
+						c.cardRank == CardRank.King ||
+						c.cardRank == CardRank.Queen ||
+						c.cardRank == CardRank.Jack ||
+						c.cardRank == CardRank.Ten);
+								
+		return _sameSuit & _containsRoyalFlush;
 	}
 
 	private static bool IsStraightFlush(List<ICard> cards)
@@ -85,7 +87,7 @@ public class HandEvaluator
 
 	private static bool IsFlush(List<ICard> cards)
 	{
-		// Check if all five cards are of the same suit.
+		
 		return cards.All(c=> c.cardSuit == cards[0].cardSuit);
 	}
 
@@ -93,9 +95,18 @@ public class HandEvaluator
 	{
 		var sortedCards = cards.OrderBy(c => c.cardRank).ToList();
 		bool isStraight = true;
-		for (int i = 0; i < sortedCards.Count; i++)
+		
+		if(sortedCards[0].cardRank == CardRank.Ace && 
+			sortedCards[1].cardRank == CardRank.Two &&
+			sortedCards[2].cardRank == CardRank.Three &&
+			sortedCards[3].cardRank == CardRank.Four &&
+			sortedCards[4].cardRank == CardRank.Five)
+			{
+				return true;
+			}
+		for(int i = 1; i < sortedCards.Count; i++)
 		{
-			if(sortedCards[i].cardRank != sortedCards[i-1].cardRank+1)
+			if(sortedCards[i].cardRank != sortedCards[i-1].cardRank +1)
 			{
 				isStraight = false;
 				break;
@@ -106,20 +117,20 @@ public class HandEvaluator
 
 	private static bool IsThreeOfAKind(List<ICard> cards)
 	{
-		// Check if there are three cards of the same rank.
+	
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 3);
 	}
 
 	private static bool IsTwoPair(List<ICard> cards)
 	{
-		// Check if there are two cards of one rank and two cards of another rank.
+		
 		var groups = cards.GroupBy(c => c.cardRank);
 		return groups.Count(g => g.Count() == 2) == 2;
 	}
 
 	private static bool IsOnePair(List<ICard> cards)
 	{
-		// Check if there are two cards of the same rank.
+		
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 2);
 	}
 }

@@ -28,3 +28,18 @@ C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.dll
 C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.pdb
 c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.genruntimeconfig.cache
 c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\ref\PokerCoba.dll
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\bin\Debug\net7.0\PokerCoba.exe
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\bin\Debug\net7.0\PokerCoba.deps.json
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\bin\Debug\net7.0\PokerCoba.runtimeconfig.json
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\bin\Debug\net7.0\PokerCoba.dll
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\bin\Debug\net7.0\PokerCoba.pdb
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.csproj.AssemblyReference.cache
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.GeneratedMSBuildEditorConfig.editorconfig
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.AssemblyInfoInputs.cache
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.AssemblyInfo.cs
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.csproj.CoreCompileInputs.cache
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.dll
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\refint\PokerCoba.dll
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.pdb
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\PokerCoba.genruntimeconfig.cache
+d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerLagi\Poker\obj\Debug\net7.0\ref\PokerCoba.dll
