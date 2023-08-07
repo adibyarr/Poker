@@ -7,12 +7,14 @@ namespace PokerCoba.Class;
 
 public class PokerGame
 {
+	
 	public List<IPlayer> Players { get; }
 	public List<ICard> CommunityCards { get; }
 	public int CommunityPot { get; private set; }
 	private readonly Deck deck;
 	public PokerGame()
 	{
+
 		Players = new List<IPlayer>();
 		CommunityCards = new List<ICard>();
 		CommunityPot = 0;
@@ -26,6 +28,11 @@ public class PokerGame
 	{
 		Deck deck = new Deck();
 		deck.Shuffle();
+		if(Players.Count * 2 > deck.Cards.Count)
+		{
+			Console.WriteLine("Kartu tidak cukup");
+			return;
+		}
 		
 		foreach(var player in Players)
 		{
@@ -35,6 +42,7 @@ public class PokerGame
 	}
 	public void DealCommunityCards(int numCommunityCards)
 	{
+		Deck deck = new Deck();
 		deck.Shuffle();
 		
 		for(int i = 0; i < numCommunityCards; i++)
@@ -56,7 +64,7 @@ public class PokerGame
 		Console.WriteLine($"Player {player.Name}, ini giliran muu");
 		Console.WriteLine($"Chips yang kamu punya: {player.Chips}");
 		Console.WriteLine($"Bet sekarang: {currentBet}");
-		Console.WriteLine("Masukkan aksimu: (fold, raise, call): ");
+		Console.WriteLine("Masukkan aksimu: (fold, raise, call, all-in): ");
 		string input = Console.ReadLine().ToLower();
 
 		switch (input)
@@ -79,7 +87,11 @@ public class PokerGame
 					else
 					{
 						Console.WriteLine("Invalid input. ");
-					}
+					}				
+				}
+				else
+				{
+					Console.WriteLine("INvalid input");
 				}
 				break;
 			case "call":
@@ -96,39 +108,38 @@ public class PokerGame
 					Console.WriteLine("Chips ga cukup");
 				}
 				break;
-			default:
-				Console.WriteLine("Invalid action. Please choose 'fold', 'raise', or 'call'.");
-				break;
-				
+			case "all-in":
+                    if (player.Chips > 0)
+                    {
+                        pot += player.Chips;
+                        player.ChipsBet += player.Chips;
+                        player.Chips = 0;
+                        Console.WriteLine($"Player {player.Name} goes all-in!");
+                    }
+                    else
+                    {
+                        Console.WriteLine("You don't have any chips left to go all-in.");
+                    }
+                    break;
+            default:
+                    Console.WriteLine("Invalid action. Please choose 'fold', 'raise', 'call', or 'all-in'.");
+                    break;
 		}
 	}
 	public IPlayer DetermineWinner()
 	
 	{
-		List<IPlayer> winner = Players.FindAll(p => !p.Folded);
+		IPlayer winner = Players[0];
 		HandEvaluator evaluator = new HandEvaluator();
 		
 		
 		foreach(var player in Players)
 		{
 			var allCards = new List<ICard>(player.Hand.Cards);
-            allCards.AddRange(CommunityCards);
+			allCards.AddRange(CommunityCards);
 
-                CardType playerHandType = HandEvaluator.EvaluateHand(allCards.Select(card => card.ToString()).ToArray());
-                CardType winnerHandType = handEvaluator.EvaluateHand(winner.Hand.Cards.Select(card => card.ToString()).ToArray());
-
-                if (playerHandType > winnerHandType)
-                {
-                    winner = player;
-                }
-                else if (playerHandType == winnerHandType)
-                {
-                    // If two players have the same hand type, compare the highest-ranking card of the hands
-                    if (CompareHighestCard(player.Hand.Cards, winner.Hand.Cards) > 0)
-                    {
-                        winner = player;
-                    }
-                }
+			CardType playerHandType = evaluator.EvaluateHand(allCards); 
+			CardType winnerHandType = evaluator.EvaluateHand(winner.Hand.Cards);
 		}
 		int totalChipsPot = CommunityPot;
 		winner.Chips += totalChipsPot;
@@ -139,17 +150,30 @@ public class PokerGame
 		Console.WriteLine("Community Card: ");
 		foreach(var card in CommunityCards)
 		{
-			Console.WriteLine(card + " ");
+			Console.WriteLine(card.ToString());
 		}
-		Console.WriteLine();
+		Console.WriteLine("\nPlayers hands: ");
 		foreach(var player in Players)
 		{
 			Console.WriteLine($"Player {player.Name} hands:");
 			foreach(var card in player.Hand.Cards)
 			{
-				Console.Write(card + " ");
+				Console.Write(card.ToString());
 			}
 			Console.WriteLine();
+		}
+	}
+	public void DisplayPlayerHand()
+	{
+		Console.WriteLine("Players hand: ");
+		foreach (var player in Players)
+		{
+			Console.WriteLine($"{player.Name} hands");
+			foreach(var card in player.Hand.Cards)
+			{
+				Console.WriteLine(card.ToString());
+			}
+			Console.WriteLine(player);
 		}
 	}
 }

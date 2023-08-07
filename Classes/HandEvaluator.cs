@@ -5,7 +5,7 @@ namespace PokerCoba.Class;
 
 public class HandEvaluator
 {
-	public CardType EvaluateHand(string[] cards)
+	public  CardType EvaluateHand(List<ICard> cards)
 	{
 		if (IsRoyalFlush(cards))
 			return CardType.RoyalFlush;
@@ -14,100 +14,112 @@ public class HandEvaluator
 			return CardType.StraightFlush;
 
 		if (IsFourOfAKind(cards))
-			return CardType.FourOfAKind;
+			throw new NotImplementedException();
 
 		if (IsFullHouse(cards))
-			return CardType.FullHouse;
+			throw new NotImplementedException();
 
 		if (IsFlush(cards))
-			return CardType.Flush;
+			throw new NotImplementedException();
 
 		if (IsStraight(cards))
-			return CardType.Straight;
+			throw new NotImplementedException();
 
 		if (IsThreeOfAKind(cards))
-			return CardType.ThreeOfAKind;
+			throw new NotImplementedException();
 
 		if (IsTwoPair(cards))
-			return CardType.TwoPair;
+			throw new NotImplementedException();
 
 		if (IsOnePair(cards))
-			return CardType.OnePair;
+			throw new NotImplementedException();
 
 		return CardType.HighCard;
 	}
 
-	private bool IsRoyalFlush(string[] cards)
+ 
+
+	private bool IsRoyalFlush(List<ICard> cards)
 	{
-		bool hasAce = false;
-		bool hasKing =false;
-		bool hasQueen = false;
-		bool hasJack = false;
-		bool hasTen = false;
+		bool sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
 		
-		foreach (var card in cards)
-		{
-			if(card.Contains("A"))
-				hasAce = true;
-			if(card.Contains("K"))
-				hasKing = true;
-			if()
-		}
+		bool containsRoyalFlush = cards.Any(c => c.cardRank== CardRank.Ace) &&
+								  cards.Any(c=> c.cardRank == CardRank.King)&&
+								  cards.Any(c => c.cardRank == CardRank.Queen)&&
+								  cards.Any(c=> c.cardRank == CardRank.Jack) &&
+								  cards.Any(c => c.cardRank == CardRank.Ten);
+		return sameSuit	& containsRoyalFlush;
 	}
 
-	private bool IsStraightFlush(ICard[] cards)
+	private static bool IsStraightFlush(List<ICard> cards)
 	{
-		// Check if the hand has five consecutive cards of the same suit.
-		return IsFlush(cards) && IsStraight(cards);
+		bool sameSuit = cards.All(c => c.cardSuit == cards[0].cardSuit);
+		var sortedCards = cards.OrderBy(c => c.cardRank).ToList();
+		
+		bool isStraight = true;
+		for (int i = 1; i< sortedCards.Count; i++)
+		{
+			if(sortedCards[i].cardRank != sortedCards[i-1].cardRank+1)
+			{
+				isStraight = false;
+				break;
+			}
+		}
+		return sameSuit && isStraight;
 	}
 
-	private bool IsFourOfAKind(ICard[] cards)
+	private static bool IsFourOfAKind(List<ICard> cards)
 	{
 		// Check if there are four cards of the same rank.
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 4);
 	}
 
-	private bool IsFullHouse(ICard[] cards)
+	private static bool IsFullHouse(List<ICard> cards)
 	{
 		// Check if there are three cards of one rank and two cards of another rank.
-		var groups = cards.GroupBy(c => c.cardRank);
-		return groups.Any(g => g.Count() == 3) && groups.Any(g => g.Count() == 2);
+		var groups = cards.GroupBy(c => c.cardRank).ToList();
+		return groups.Count == 2 && 
+				(groups[0].Count() == 3 && groups[1].Count() == 2 ||
+				 groups[0].Count() == 2 && groups[1].Count() == 3);
 	}
 
-	private bool IsFlush(ICard[] cards)
+	private static bool IsFlush(List<ICard> cards)
 	{
 		// Check if all five cards are of the same suit.
-		return cards.GroupBy(c => c.cardSuit).Any(g => g.Count() == 5);
+		return cards.All(c=> c.cardSuit == cards[0].cardSuit);
 	}
 
-	private bool IsStraight(ICard[] cards)
+	private static bool IsStraight(List<ICard> cards)
 	{
-		// Check if the hand has five consecutive cards of any suit.
-		var ranks = cards.Select(c => (int)c.cardRank).OrderBy(r => r).ToList();
-		return Enumerable.Range(ranks[0], 5).SequenceEqual(ranks);
+		var sortedCards = cards.OrderBy(c => c.cardRank).ToList();
+		bool isStraight = true;
+		for (int i = 0; i < sortedCards.Count; i++)
+		{
+			if(sortedCards[i].cardRank != sortedCards[i-1].cardRank+1)
+			{
+				isStraight = false;
+				break;
+			}
+		}
+		return isStraight;
 	}
 
-	private bool IsThreeOfAKind(ICard[] cards)
+	private static bool IsThreeOfAKind(List<ICard> cards)
 	{
 		// Check if there are three cards of the same rank.
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 3);
 	}
 
-	private bool IsTwoPair(ICard[] cards)
+	private static bool IsTwoPair(List<ICard> cards)
 	{
 		// Check if there are two cards of one rank and two cards of another rank.
 		var groups = cards.GroupBy(c => c.cardRank);
 		return groups.Count(g => g.Count() == 2) == 2;
 	}
 
-	private bool IsOnePair(ICard[] cards)
+	private static bool IsOnePair(List<ICard> cards)
 	{
 		// Check if there are two cards of the same rank.
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 2);
-	}
-
-	internal Hand EvaluateHand(List<ICard> allCards)
-	{
-		throw new NotImplementedException();
 	}
 }

@@ -1,0 +1,4 @@
+- card belum ada tampilannya
+- method BettingRound juga masih unhandled NotImplementedException
+- CommunityCards belum tampilannya
+- delegate belum ada

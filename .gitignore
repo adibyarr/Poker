@@ -1,0 +1,85 @@
+# C# and .NET build artifacts
+*.exe
+*.dll
+*.pdb
+*.user
+*.suo
+*.cache
+*.csproj.user
+*.vs
+*.vscode
+
+# Build results
+[Dd]ebug/
+[Rr]elease/
+x64/
+x86/
+bld/
+[Bb]in/
+[Oo]bj/
+
+# NuGet packages
+*.nupkg
+*.paket.restore.*
+
+# MSTest test Results
+[Tt]est[Rr]esult*/
+[Bb]uild[Ll]og.*
+
+# Build Results of an ATL Project
+[Dd]ebugPS/
+[Rr]eleasePS/
+dlldata.c
+
+# .NET Core
+project.lock.json
+project.fragment.lock.json
+artifacts/
+**/Properties/launchSettings.json
+
+# StyleCop
+StyleCopReport.xml
+
+# Visual Studio files
+*.sln
+*.suo
+*.csproj
+*.csproj.user
+*.sln.docstates
+*.suo
+*.user
+*.vspscc
+*_i.c
+*_p.c
+*.ncb
+*.suo
+*.tlb
+*.tlh
+*.bak
+*.[Cc]ache
+*.ilk
+*.log
+*.lib
+*.sbr
+*.scc
+[Thumbs.db|_Thumbs.db|Thumb.db|_Thumb.db]
+*.vcxproj.filters
+
+# Rider
+.idea/
+
+# Resharper
+_ReSharper*/
+*.resharper
+*.DotSettings.user
+
+# Visual Studio Code
+.vscode/
+
+# Windows folders and files
+[Dd]esktop.ini
+*.ini
+*.ntuser
+*.log
+*.pidb
+*.sln.docstates

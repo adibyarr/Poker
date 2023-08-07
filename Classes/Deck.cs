@@ -31,13 +31,16 @@ public class Deck : IDeck
 	}
 	public void Shuffle()
 	{
-		var shuffleCards = Cards.OrderBy(c => Guid.NewGuid());
+		List<ICard> cardList = new List<ICard>(Cards);
 		Cards.Clear();
 		
-		foreach(var card in shuffleCards)
+		var random = new Random();
+		while(cardList.Count > 0)
 		{
-			Cards.Push(card);
-		} 
+			int index = random.Next(cardList.Count);
+			Cards.Push(cardList[index]);
+			cardList.RemoveAt(index);
+		}
 	}
 	public static void DealCard(PokerGame pokerGame)
 	{
@@ -46,8 +49,8 @@ public class Deck : IDeck
 		
 		int totalCardsToDeal = pokerGame.Players.Count * 2;
    		 if (deck.Cards.Count < totalCardsToDeal)
-    	{
-        	throw new InvalidOperationException("Not enough cards in the deck to deal to all players.");
+		{
+			throw new InvalidOperationException("Not enough cards in the deck to deal to all players.");
    		}
 
 		foreach(var player in pokerGame.Players)

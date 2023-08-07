@@ -13,3 +13,18 @@ d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerCoba\obj\Debug\net7.0\refin
 d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerCoba\obj\Debug\net7.0\PokerCoba.pdb
 d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerCoba\obj\Debug\net7.0\PokerCoba.genruntimeconfig.cache
 d:\Conwood\Referensi Jurnal\File Adibya\DJ ADIB\PokerCoba\obj\Debug\net7.0\ref\PokerCoba.dll
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.csproj.AssemblyReference.cache
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.AssemblyInfoInputs.cache
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.AssemblyInfo.cs
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.csproj.CoreCompileInputs.cache
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.dll
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\refint\PokerCoba.dll
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.pdb
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.exe
+c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.deps.json
+c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.runtimeconfig.json
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.dll
+C:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\bin\Debug\net7.0\PokerCoba.pdb
+c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\PokerCoba.genruntimeconfig.cache
+c:\Users\Batch 3\Downloads\PokerCoba\PokerCoba\obj\Debug\net7.0\ref\PokerCoba.dll

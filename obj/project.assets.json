@@ -8,26 +8,24 @@
     "net7.0": []
   },
   "packageFolders": {
-    "C:\\Users\\hp\\.nuget\\packages\\": {}
+    "C:\\Users\\Batch 3\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerCoba\\PokerCoba.csproj",
+      "projectUniqueName": "c:\\Users\\Batch 3\\Downloads\\PokerCoba\\PokerCoba\\PokerCoba.csproj",
       "projectName": "PokerCoba",
-      "projectPath": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerCoba\\PokerCoba.csproj",
-      "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-      "outputPath": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerCoba\\obj\\",
+      "projectPath": "c:\\Users\\Batch 3\\Downloads\\PokerCoba\\PokerCoba\\PokerCoba.csproj",
+      "packagesPath": "C:\\Users\\Batch 3\\.nuget\\packages\\",
+      "outputPath": "c:\\Users\\Batch 3\\Downloads\\PokerCoba\\PokerCoba\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "C:\\Users\\Batch 3\\AppData\\Roaming\\NuGet\\NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net7.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -61,7 +59,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.302\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.202\\RuntimeIdentifierGraph.json"
       }
     }
   }

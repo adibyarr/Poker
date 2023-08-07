@@ -22,14 +22,15 @@ public class PokerGameManager
 	{
 		Console.WriteLine("Welcome to Texas Hold'em Poker!");
 
-		IPlayer player1 = new Player("John", 1000);
-		IPlayer player2 = new Player("Alice", 1500);
+		IPlayer player1 = new Player("Jacob", 1000);
+		IPlayer player2 = new Player("Sialan", 1500);
 		AddPlayer(player1);
 		AddPlayer(player2);
 
 		Console.WriteLine("Game started!");
 		
 		PokerGame.DealCards();
+		PokerGame.DisplayPlayerHand();
 
 		int pot = 0;
 		PokerGame.BettingRound(currentBet: 0, ref pot);
