@@ -6,55 +6,67 @@ using System.Xml.Serialization;
 namespace PokerCoba.Class;
 public class PokerGameManager
 {
-	public PokerGame PokerGame { get; }
+	public PokerGame pokerGame { get; }
+	private readonly PlayerActionHandler actionHandler;
+	private readonly GameMechanic gameMechanic;
+	private readonly BettingRoundHandler bettingRoundHandler;
 
 	public PokerGameManager()
 	{
-		PokerGame = new PokerGame();
-	}
-
-	public void AddPlayer(IPlayer player)
-	{
-		PokerGame.AddPlayer(player);
+		pokerGame = new PokerGame();
+		actionHandler = new PlayerActionHandler();
+		gameMechanic = new GameMechanic();
+		bettingRoundHandler = new BettingRoundHandler();
 	}
 
 	public void StartGame()
 	{
 		Console.WriteLine("Welcome to Texas Hold'em Poker!");
-
-		IPlayer player1 = new Player("Jacob", 1000);
-		IPlayer player2 = new Player("Sialan", 1500);
-		AddPlayer(player1);
-		AddPlayer(player2);
-
-		Console.WriteLine("Game started!");
 		
-		PokerGame.DealCards();
-		PokerGame.DisplayPlayerHand();
+		IPlayer player1 = new Player("Anjasss", 3000);
+		IPlayer player2 = new Player("Kobisss", 3000);
+		IPlayer player3 = new Player("Sikatt", 3000);
+		pokerGame.AddPlayer(player1);
+		pokerGame.AddPlayer(player2);
+		pokerGame.AddPlayer(player3);
+		Console.WriteLine("Game started!");
+
+		pokerGame.DealCards();
+		
 		
 
 		int pot = 0;
-		PokerGame.BettingRound(currentBet: 0, ref pot);
+		int currentBet = 0;
 		
-		PokerGame.DealCommunityCards(numCommunityCards:3);
-		PokerGame.DisplayHandAndCommunityCards();
-		
-		PokerGame.BettingRound(currentBet:0, ref pot);
-		PokerGame.DealCommunityCards(numCommunityCards:1);
-		
-		PokerGame.BettingRound(currentBet:0, ref pot);
-		PokerGame.DealCommunityCards(numCommunityCards:1);
-		
-		PokerGame.BettingRound(currentBet: 0, ref pot);
-		
-		var(winner, WinningHand) = PokerGame.DetermineWinner();
-		
-;
-		Console.WriteLine($"Player {winner.Name} wins {pot} with {WinningHand}");
-		
-		Console.WriteLine("Game Over");
-	}
+			// Initial betting round
+			bettingRoundHandler.HandleInitialBettingRound(pokerGame, ref pot);
+			Display.DisplayPlayerHand(pokerGame.Players[0]);
+			Display.DisplayPlayerHand(pokerGame.Players[1]);
+			Display.DisplayPlayerHand(pokerGame.Players[2]);
+			
+			pokerGame.DealCommunityCards(numCommunityCards: 3);
+			Display.DisplayHandAndCommunityCards(pokerGame.CommunityCards);
+			
+			// Second betting round
+			bettingRoundHandler.HandleBettingRound(pokerGame.Players, pokerGame.CommunityCards, ref currentBet);
 
-	
+			pokerGame.DealCommunityCards(numCommunityCards: 1);
+			
+			
+			// Third betting round
+			bettingRoundHandler.HandleBettingRound(pokerGame.Players, pokerGame.CommunityCards, ref currentBet);
+
+			pokerGame.DealCommunityCards(numCommunityCards: 1);
+			
+			// Final betting round
+			bettingRoundHandler.HandleBettingRound(pokerGame.Players, pokerGame.CommunityCards,  ref currentBet);
+
+			(IPlayer winner, CardType winningHand) = pokerGame.DetermineWinner();
+			Console.WriteLine($"Player {winner.Name} wins {pot} chips with a {winningHand}!");
+			Console.WriteLine("Game Over");
+	 }
+
+		
 	
 }
+

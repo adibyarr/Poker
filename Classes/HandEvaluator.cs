@@ -133,4 +133,21 @@ public class HandEvaluator
 		
 		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 2);
 	}
+	private Dictionary<CardRank, int> GetCardCounts(List<ICard> cards)
+	{
+		Dictionary<CardRank, int> cardCounts = new Dictionary<CardRank, int>();
+		foreach(var card in cards)
+		{
+			if(cardCounts.ContainsKey(card.cardRank))
+			{
+					cardCounts[card.cardRank]++;
+			}
+			else
+			{
+				cardCounts.Add(card.cardRank, 1);
+			}
+		}
+		return cardCounts;
+	}
 }
+

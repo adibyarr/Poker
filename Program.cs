@@ -12,6 +12,8 @@ public class Program
 	{
 		PokerGameManager pokerGameManager = new PokerGameManager();
 		pokerGameManager.StartGame();
+		
+		Console.ReadLine();
 	}
 
    
