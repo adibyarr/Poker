@@ -57,10 +57,10 @@ public class BettingRoundHandler
 			{
 				if (player.Folded) continue;
 
-				Console.WriteLine($"{player.Name}, it's your turn.");
+				Console.WriteLine($"\n{player.Name}, it's your turn.");
 				Console.WriteLine($"Current pot: {pot}");
-				Console.WriteLine($"Your chips: {player.Chips}");
-				Console.WriteLine("Do you want to bet (b), check (c), or fold (f) or all-in(a)?");
+				Console.WriteLine($"Your chips: {player.Chips}\n");
+				Console.WriteLine("\nDo you want to bet (b), check (c), or fold (f) or all-in(a)?");
 				string input = Console.ReadLine().ToLower();
 
 				if (input == "b")

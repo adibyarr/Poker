@@ -11,16 +11,16 @@ public class PokerGame
 	public List<IPlayer> Players { get; }
 	public List<ICard> CommunityCards { get; }
 	public int CommunityPot { get; private set; }
-	private readonly Deck deck;
-	private PlayerActionHandler playerActionHandler;
+	private readonly Deck _deck;
+	private PlayerActionHandler _playerActionHandler;
 	public PokerGame()
 	{
 
 		Players = new List<IPlayer>();
 		CommunityCards = new List<ICard>();
 		CommunityPot = 0;
-		deck = new Deck();
-		playerActionHandler = new PlayerActionHandler();
+		_deck = new Deck();
+		_playerActionHandler = new PlayerActionHandler();
 	}
 
 	public void AddPlayer(IPlayer player)
@@ -50,6 +50,15 @@ public class PokerGame
 		{
 			ICard communityCards = deck.Draw();
 			CommunityCards.Add(communityCards);
+			foreach(var player in Players)
+			{
+				ICard cardToRemove = player.Hand.Cards.FirstOrDefault(card => card.cardRank == communityCards.cardRank && card.cardSuit == communityCards.cardSuit);
+				
+				if(cardToRemove != null)
+				{
+					player.Hand.Cards.Remove(cardToRemove);
+				}
+			}
 		}
 	}
 	

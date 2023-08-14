@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "d:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj": {}
+    "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj": {}
   },
   "projects": {
-    "d:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj": {
+    "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "d:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj",
+        "projectUniqueName": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj",
         "projectName": "PokerCoba",
-        "projectPath": "d:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj",
+        "projectPath": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj",
         "packagesPath": "C:\\Users\\hp\\.nuget\\packages\\",
-        "outputPath": "d:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\obj\\",
+        "outputPath": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
           "C:\\Users\\hp\\AppData\\Roaming\\NuGet\\NuGet.Config",

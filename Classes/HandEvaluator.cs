@@ -123,15 +123,14 @@ public class HandEvaluator
 
 	private static bool IsTwoPair(List<ICard> cards)
 	{
-		
 		var groups = cards.GroupBy(c => c.cardRank);
-		return groups.Count(g => g.Count() == 2) == 2;
+		return groups.Count(g => g.Count() == 2) >= 2;
 	}
 
 	private static bool IsOnePair(List<ICard> cards)
 	{
 		
-		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 2);
+		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 1);
 	}
 	private Dictionary<CardRank, int> GetCardCounts(List<ICard> cards)
 	{
