@@ -78,11 +78,9 @@ public class HandEvaluator
 
 	private static bool IsFullHouse(List<ICard> cards)
 	{
-		// Check if there are three cards of one rank and two cards of another rank.
+	
 		var _groups = cards.GroupBy(c => c.cardRank).ToList();
-		return _groups.Count == 2 && 
-				(_groups[0].Count() == 3 && _groups[1].Count() == 2 ||
-				 _groups[0].Count() == 2 && _groups[1].Count() == 3);
+		return _groups.Count() == 2 && (_groups[0].Count() == 3 && _groups[1].Count() == 2);
 	}
 
 	private static bool IsFlush(List<ICard> cards)
@@ -117,20 +115,21 @@ public class HandEvaluator
 
 	private static bool IsThreeOfAKind(List<ICard> cards)
 	{
-	
-		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 3);
+		var groups = cards.GroupBy(c => c.cardRank);
+		return groups.Any(g => g.Count() == 3);
 	}
 
 	private static bool IsTwoPair(List<ICard> cards)
 	{
 		var groups = cards.GroupBy(c => c.cardRank);
-		return groups.Count(g => g.Count() == 2) >= 2;
+		var pairsCount = groups.Count(g => g.Count() == 2);
+		return pairsCount >= 2;
 	}
 
 	private static bool IsOnePair(List<ICard> cards)
 	{
-		
-		return cards.GroupBy(c => c.cardRank).Any(g => g.Count() == 1);
+		var groups = cards.GroupBy(c => c.cardRank);	
+		return groups.Any(g => g.Count() ==2);
 	}
 	private Dictionary<CardRank, int> GetCardCounts(List<ICard> cards)
 	{

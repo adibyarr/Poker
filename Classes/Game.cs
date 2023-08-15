@@ -11,8 +11,8 @@ public class PokerGame
 	public List<IPlayer> Players { get; }
 	public List<ICard> CommunityCards { get; }
 	public int CommunityPot { get; private set; }
-	private readonly Deck _deck;
-	private PlayerActionHandler _playerActionHandler;
+	private Deck _deck;
+	
 	public PokerGame()
 	{
 
@@ -20,7 +20,7 @@ public class PokerGame
 		CommunityCards = new List<ICard>();
 		CommunityPot = 0;
 		_deck = new Deck();
-		_playerActionHandler = new PlayerActionHandler();
+		
 	}
 
 	public void AddPlayer(IPlayer player)
