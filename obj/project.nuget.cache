@@ -1,8 +1,12 @@
 {
   "version": 2,
-  "dgSpecHash": "TDPgD/KrnME67HSe3lD6r0MX692ZZ2X6B78tNR/nrNixg/tP2w67SCYL9Ky78Q6JW9+7nBvB4HOvcRlMh78oFQ==",
+  "dgSpecHash": "3EZKtxV4aQ1O1yLiXWgQR4suh2vTkRUmOL83pNcWj3Z1CmT71zNOMwzUj9nfiGdmKTUgGFI8Mf5ascCcezH/zQ==",
   "success": true,
-  "projectFilePath": "D:\\Conwood\\Referensi Jurnal\\File Adibya\\DJ ADIB\\PokerLagi\\Poker\\PokerCoba.csproj",
-  "expectedPackageFiles": [],
+  "projectFilePath": "d:\\Conwood\\PCD\\Poker\\PokerCoba.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hp\\.nuget\\packages\\microsoft.netcore.platforms\\1.1.0\\microsoft.netcore.platforms.1.1.0.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\netstandard.library\\2.0.0\\netstandard.library.2.0.0.nupkg.sha512",
+    "C:\\Users\\hp\\.nuget\\packages\\nunit\\3.13.3\\nunit.3.13.3.nupkg.sha512"
+  ],
   "logs": []
 }
